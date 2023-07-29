@@ -1,0 +1,15 @@
+librosa
+matplotlib
+pandas
+pathlib
+PyQt6
+scikit-learn
+scipy
+sounddevice
+soundfile
+typing-extensions
+tqdm
+
+--extra-index-url https://download.pytorch.org/whl/cu118
+torch
+torchaudio
