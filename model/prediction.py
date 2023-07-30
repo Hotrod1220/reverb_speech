@@ -5,7 +5,7 @@ import torchaudio
 
 from model.transformation import Transformation
 from typing import TYPE_CHECKING
-from model.visualize import Envelope, Spectrogram
+from model.visualize import Envelope, Spectrogram, Waveform
 
 if TYPE_CHECKING:
     from model import Model
@@ -61,10 +61,12 @@ class Predictor():
             'original': {
                 'envelope': Envelope.from_signal(path),
                 'spectrogram': Spectrogram.from_signal(path, settings),
+                'waveform': Waveform.from_signal(path),
             },
             "transform": {
                 'envelope': Envelope.from_tensor(signal),
                 'spectrogram': Spectrogram.from_tensor(signal, settings),
+                'waveform': None,
             },
             'prediction': {
                 'label': label,

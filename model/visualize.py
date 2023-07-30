@@ -143,3 +143,26 @@ class Spectrogram():
         plt.tight_layout()
 
         return fig, ax
+
+class Waveform():
+    @classmethod
+    def from_signal(cls: type[Self], path: Path) -> Figure:
+        signal, sr = librosa.load(path)
+
+        figsize = (18, 4)
+        fig, ax = plt.subplots(figsize=figsize)
+
+        ax.plot(
+            signal,
+            color='#5d376d',
+            fillstyle='none',
+            linewidth=1.0
+        )
+
+        plt.tight_layout()
+
+        return fig, ax
+
+    @classmethod
+    def from_tensor(cls: type[Self], tensor: npt.NDArray) -> None:
+        raise NotImplementedError

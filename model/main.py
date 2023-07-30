@@ -21,7 +21,7 @@ def main() -> None:
 
     torch.backends.cudnn.benchmark = True
 
-    current = Path.cwd().joinpath('samples')
+    current = Path.cwd().joinpath('../samples')
 
     path = root.joinpath('annotation.csv')
 

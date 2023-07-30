@@ -63,9 +63,9 @@ class Window(QMainWindow):
         self.explorer.list.setMinimumWidth(width)
 
         self.mapping = {
-            0: 'Small Room',
+            0: 'Large Room',
             1: 'Medium Room',
-            2: 'Large Room'
+            2: 'Small Room'
         }
 
         self.load()
@@ -122,7 +122,7 @@ class Window(QMainWindow):
 
             return
 
-        self.plot.canvas.display(figure)
+        self.plot.canvas.display(figure[0])
 
         self.explorer.list.setFocus()
 
@@ -148,21 +148,6 @@ class Window(QMainWindow):
         self.predictor.model = self.model
 
     def on_click_load(self) -> None:
-        # folder = (
-        #     Path
-        #     .cwd()
-        #     .joinpath('sound')
-        # )
-
-        # files = [
-        #     file.as_posix()
-        #     for file in Path(folder).glob('*.wav')
-        #     if file.exists() and file.is_file()
-        # ]
-
-        # self.explorer.add(files)
-        # self.explorer.list.setFocus()
-
         dialog = QFileDialog()
         dialog.setFileMode(QFileDialog.FileMode.Directory)
 
@@ -176,45 +161,6 @@ class Window(QMainWindow):
             ]
 
             self.explorer.add(files)
-
-
-
-
-        # directory = (
-        #     Path
-        #     .cwd()
-        #     .joinpath('sound')
-        #     .as_posix()
-        # )
-
-        # current, _ = QFileDialog.getOpenFileName(
-        #     self,
-        #     'Open file',
-        #     filter='(*.wav)',
-        #     directory=directory
-        # )
-
-        # if not current:
-        #     QMessageBox.warning(
-        #         self,
-        #         'Warning',
-        #         'Please provide a valid path.'
-        #     )
-
-        #     return
-
-        # self.current = current
-
-        # # Make the prediction
-        # self.current = Path(self.current)
-
-        # self.result = self.predictor.from_path(self.current)
-        # metadata = self.result.get(self.current.name)
-
-        # prediction = metadata.get('prediction').get('label')
-        # self.prediction.setText(f"Prediction: {prediction}")
-
-        # self.update()
 
     def on_new_prediction(self) -> None:
         if self.result is not None:
@@ -261,7 +207,7 @@ class Window(QMainWindow):
         self.result = self.predictor.from_path(self.current)
         metadata = self.result.get(self.current.name)
 
-        prediction = metadata.get('label')
+        prediction = metadata.get('prediction').get('label')
         self.prediction.setText(f"Prediction: {prediction}")
 
         self.update()
