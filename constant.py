@@ -19,13 +19,12 @@ def walk(file: Path) -> Path | None:
 
 
 file = Path.cwd()
-CWD = walk(file).joinpath('render')
+CWD = walk(file)
 
 MODEL = CWD.joinpath('model')
 DATASET = CWD.joinpath('dataset')
 
 CONVERTED = DATASET.joinpath('converted')
 ORIGINAL = DATASET.joinpath('original')
-RENDER = DATASET.joinpath('render')
 
 STATE = MODEL.joinpath('state')

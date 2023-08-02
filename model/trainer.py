@@ -106,15 +106,38 @@ class Trainer():
     def start(self) -> None:
         self.model.to(self.device)
 
+        history = {
+            'training': {
+                'classification_accuracy': [],
+                'classification_loss': []
+            },
+            'validation': {
+                'classification_accuracy': [],
+                'classification_loss': []
+            }
+        }
+
         for i in range(self.epoch):
             print(f"[Epoch {i + 1}]")
 
             loss, accuracy = self._single_training_epoch()
 
+            accuracy = round(accuracy, 10)
+            loss = round(loss, 10)
+
+            history['training']['classification_accuracy'].append(accuracy)
+            history['training']['classification_loss'].append(loss)
+
             print(f"training_accuracy: {accuracy:.4f}")
             print(f"training_loss: {loss:.4f}")
 
             loss, accuracy = self._single_validation_epoch()
+
+            accuracy = round(accuracy, 10)
+            loss = round(loss, 10)
+
+            history['validation']['classification_accuracy'].append(accuracy)
+            history['validation']['classification_loss'].append(loss)
 
             print(f"validation_accuracy: {accuracy:.4f}")
             print(f"validation_loss: {loss:.4f}")
@@ -122,3 +145,5 @@ class Trainer():
             print()
 
         print('Training is complete')
+
+        return history

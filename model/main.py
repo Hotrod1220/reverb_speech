@@ -21,7 +21,7 @@ def main() -> None:
 
     torch.backends.cudnn.benchmark = True
 
-    current = Path.cwd().joinpath('../samples')
+    current = Path.cwd().joinpath('../rirs')
 
     path = root.joinpath('annotation.csv')
 
@@ -127,15 +127,18 @@ def main() -> None:
     trainer.testing = testing
     trainer.training = training
     trainer.validating = validating
-    trainer.start()
+    history = trainer.start()
 
     torch.save(
         model.state_dict(),
-        'model/model.pth'
+        'state/model.pth'
     )
 
-    with open('model/trainer.pkl', 'wb') as handle:
+    with open('state/trainer.pkl', 'wb') as handle:
         pickle.dump(trainer, handle)
+
+    with open('state/history.pkl', 'wb') as handle:
+        pickle.dump(history, handle)
 
 
 if __name__ == '__main__':
