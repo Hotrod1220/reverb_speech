@@ -119,7 +119,7 @@ def main() -> None:
 
     trainer = Trainer()
     trainer.device = device
-    trainer.epoch = 10
+    trainer.epoch = 20
     trainer.loss = loss
     trainer.model = model
     trainer.optimizer = optimizer
