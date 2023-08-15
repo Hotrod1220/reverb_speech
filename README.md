@@ -1,5 +1,5 @@
 ## Reverberation Classification
-An exploratory repository into reverberation classification using PyTorch and TorchAudio.
+An exploratory repository into reverberation classification using PyTorch and TorchAudio. The project used audio convolution to generate the dataset, preprocessed all audio samples into their mel spectrograms, and input these in a convolutional neural network to classify room size. 
 
 ## Poster Creation
 A poster was created and presented at the Summer Research Showcase Celebration at the University of Lethbridge.
