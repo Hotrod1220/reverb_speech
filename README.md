@@ -4,7 +4,7 @@ An exploratory repository into reverberation classification using PyTorch and To
 ## Poster Creation
 A poster was created and presented at the Summer Research Showcase Celebration at the University of Lethbridge.
 
-[Poster_final.pdf](https://github.com/Hotrod1220/reverb_speech/files/12352651/Poster_final.pdf)
+![Final Reverb Classification Poster](reverb_speech/asset/Poster_final.pdf?raw=true "Reverb Classification Poster")
 
 The dataset(s) used in this repository can be found [here](https://github.com/RoyJames/room-impulse-responses).
 
